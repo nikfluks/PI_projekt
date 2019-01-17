@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="898c828a1b1d432990cc551b8ad81d4f" Name="Diagram1">
+        <EntityTypeShape EntityType="RadionicaModel.Autoservis" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.KatalogServisneKnjizice" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.Mjesto" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.Popravak" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.Racun" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.RezervniDio" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.ServisnaKnjizica" Width="1.5" PointX="12.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.VlasnikVozila" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.Vozilo" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.VrstaUsluge" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RadionicaModel.Zaposlenik" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="RadionicaModel.fk_Autoservis_Mjesto1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Racun_Autoservis1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Zaposlenik_Autoservis1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_ServisnaKnjizica_KatalogServisneKnjizice1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_VlasnikVozila_Mjesto" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Zaposlenik_Mjesto1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Popravak_RezervniDio1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Popravak_Vozilo1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Popravak_Zaposlenik1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Racun_Popravak1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_ServisnaKnjizica_Popravak1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Racun_Zaposlenik1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.fk_Vozilo_VlasnikVozila1" ManuallyRouted="false" />
+        <AssociationConnector Association="RadionicaModel.ObavljanjeUsluge" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

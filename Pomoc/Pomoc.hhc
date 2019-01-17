@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="O aplikaciji">
+		<param name="Local" value="O aplikaciji.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Glavna forma">
+		<param name="Local" value="FrmGlavna.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz zaposlenika">
+		<param name="Local" value="FrmPrikazZaposlenika.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prijava">
+		<param name="Local" value="FrmPrijava.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novi zaposlenik">
+		<param name="Local" value="FrmNoviZaposlenik.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz vozila">
+		<param name="Local" value="FrmPrikazVozila.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novo vozilo">
+		<param name="Local" value="FrmNovoVozilo.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz vlasnika vozila">
+		<param name="Local" value="FrmPrikazVlasnikaVozila.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novi vlasnik vozila">
+		<param name="Local" value="FrmNoviVlasnikVozila.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz rezervnih dijelova">
+		<param name="Local" value="FrmPrikazRezervnihDijelova.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novi rezervni dio">
+		<param name="Local" value="FrmNoviRezervniDio.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novo mjesto">
+		<param name="Local" value="FrmNovoMjesto.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz statistike popravaka">
+		<param name="Local" value="FrmPrikazStatistikePopravaka.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz ra&egrave;una">
+		<param name="Local" value="FrmPrikazRacuna.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novi ra&egrave;un">
+		<param name="Local" value="FrmNoviRacun.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma prikaz popravaka">
+		<param name="Local" value="FrmPrikazPopravaka.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Forma novi popravak">
+		<param name="Local" value="FrmNoviPopravak.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>

@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RadionicaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autoservis">
+          <Key>
+            <PropertyRef Name="OIB" />
+          </Key>
+          <Property Name="OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="telefonskiBroj" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ulica" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="postanskiBrojMjesta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KatalogServisneKnjizice">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mjesto">
+          <Key>
+            <PropertyRef Name="postanskiBroj" />
+          </Key>
+          <Property Name="postanskiBroj" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ObavljanjeUsluge">
+          <Key>
+            <PropertyRef Name="sifraVrsteUsluge" />
+            <PropertyRef Name="sifraPopravka" />
+          </Key>
+          <Property Name="sifraVrsteUsluge" Type="int" Nullable="false" />
+          <Property Name="sifraPopravka" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Popravak">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="int" Nullable="false" />
+          <Property Name="sifraRezervnogDijela" Type="int" Nullable="false" />
+          <Property Name="sifraVozila" Type="int" Nullable="false" />
+          <Property Name="Zaposlenik_OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="datumPopravka" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sifraPopravka" Type="int" Nullable="false" />
+          <Property Name="Autoservis_OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Zaposlenik_OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RezervniDio">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cijena" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServisnaKnjizica">
+          <Key>
+            <PropertyRef Name="KatalogServisneKnjizice_sifra" />
+            <PropertyRef Name="Popravak_sifra" />
+          </Key>
+          <Property Name="KatalogServisneKnjizice_sifra" Type="int" Nullable="false" />
+          <Property Name="Popravak_sifra" Type="int" Nullable="false" />
+          <Property Name="vrijednost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VlasnikVozila">
+          <Key>
+            <PropertyRef Name="OIB" />
+          </Key>
+          <Property Name="OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="datumRodenja" Type="date" Nullable="false" />
+          <Property Name="spol" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="postanskiBrojMjesta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vozilo">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="godinaProizvodnje" Type="int" Nullable="false" />
+          <Property Name="registracijskaOznaka" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="VlasnikVozila_OIB" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VrstaUsluge">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cijena" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zaposlenik">
+          <Key>
+            <PropertyRef Name="OIB" />
+          </Key>
+          <Property Name="OIB" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="datumZaposlenja" Type="date" Nullable="false" />
+          <Property Name="korisnickoIme" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="lozinka" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Mjesto_sifra" Type="int" Nullable="false" />
+          <Property Name="Autoservis_OIB" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Autoservis_Mjesto1">
+          <End Role="Mjesto" Type="Self.Mjesto" Multiplicity="1" />
+          <End Role="Autoservis" Type="Self.Autoservis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjesto">
+              <PropertyRef Name="postanskiBroj" />
+            </Principal>
+            <Dependent Role="Autoservis">
+              <PropertyRef Name="postanskiBrojMjesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ObavljanjeUsluge_Popravak1">
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="1" />
+          <End Role="ObavljanjeUsluge" Type="Self.ObavljanjeUsluge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravak">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="ObavljanjeUsluge">
+              <PropertyRef Name="sifraPopravka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ObavljanjeUsluge_VrstaUsluge1">
+          <End Role="VrstaUsluge" Type="Self.VrstaUsluge" Multiplicity="1" />
+          <End Role="ObavljanjeUsluge" Type="Self.ObavljanjeUsluge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VrstaUsluge">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="ObavljanjeUsluge">
+              <PropertyRef Name="sifraVrsteUsluge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Popravak_RezervniDio1">
+          <End Role="RezervniDio" Type="Self.RezervniDio" Multiplicity="1" />
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RezervniDio">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="Popravak">
+              <PropertyRef Name="sifraRezervnogDijela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Popravak_Vozilo1">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="Popravak">
+              <PropertyRef Name="sifraVozila" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Popravak_Zaposlenik1">
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="1" />
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposlenik">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Popravak">
+              <PropertyRef Name="Zaposlenik_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Racun_Autoservis1">
+          <End Role="Autoservis" Type="Self.Autoservis" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autoservis">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Autoservis_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Racun_Popravak1">
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravak">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="sifraPopravka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Racun_Zaposlenik1">
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposlenik">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Zaposlenik_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ServisnaKnjizica_KatalogServisneKnjizice1">
+          <End Role="KatalogServisneKnjizice" Type="Self.KatalogServisneKnjizice" Multiplicity="1" />
+          <End Role="ServisnaKnjizica" Type="Self.ServisnaKnjizica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KatalogServisneKnjizice">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="ServisnaKnjizica">
+              <PropertyRef Name="KatalogServisneKnjizice_sifra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ServisnaKnjizica_Popravak1">
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="1" />
+          <End Role="ServisnaKnjizica" Type="Self.ServisnaKnjizica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravak">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="ServisnaKnjizica">
+              <PropertyRef Name="Popravak_sifra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VlasnikVozila_Mjesto">
+          <End Role="Mjesto" Type="Self.Mjesto" Multiplicity="1" />
+          <End Role="VlasnikVozila" Type="Self.VlasnikVozila" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjesto">
+              <PropertyRef Name="postanskiBroj" />
+            </Principal>
+            <Dependent Role="VlasnikVozila">
+              <PropertyRef Name="postanskiBrojMjesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Vozilo_VlasnikVozila1">
+          <End Role="VlasnikVozila" Type="Self.VlasnikVozila" Multiplicity="1" />
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VlasnikVozila">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Vozilo">
+              <PropertyRef Name="VlasnikVozila_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Zaposlenik_Autoservis1">
+          <End Role="Autoservis" Type="Self.Autoservis" Multiplicity="1" />
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autoservis">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Zaposlenik">
+              <PropertyRef Name="Autoservis_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Zaposlenik_Mjesto1">
+          <End Role="Mjesto" Type="Self.Mjesto" Multiplicity="1" />
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjesto">
+              <PropertyRef Name="postanskiBroj" />
+            </Principal>
+            <Dependent Role="Zaposlenik">
+              <PropertyRef Name="Mjesto_sifra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RadionicaModelStoreContainer">
+          <EntitySet Name="Autoservis" EntityType="Self.Autoservis" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="KatalogServisneKnjizice" EntityType="Self.KatalogServisneKnjizice" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="Mjesto" EntityType="Self.Mjesto" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="ObavljanjeUsluge" EntityType="Self.ObavljanjeUsluge" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="Popravak" EntityType="Self.Popravak" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="Racun" EntityType="Self.Racun" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="RezervniDio" EntityType="Self.RezervniDio" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="ServisnaKnjizica" EntityType="Self.ServisnaKnjizica" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="VlasnikVozila" EntityType="Self.VlasnikVozila" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="Vozilo" EntityType="Self.Vozilo" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="VrstaUsluge" EntityType="Self.VrstaUsluge" Schema="piProjekt" store:Type="Tables" />
+          <EntitySet Name="Zaposlenik" EntityType="Self.Zaposlenik" Schema="piProjekt" store:Type="Tables" />
+          <AssociationSet Name="fk_Autoservis_Mjesto1" Association="Self.fk_Autoservis_Mjesto1">
+            <End Role="Mjesto" EntitySet="Mjesto" />
+            <End Role="Autoservis" EntitySet="Autoservis" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ObavljanjeUsluge_Popravak1" Association="Self.fk_ObavljanjeUsluge_Popravak1">
+            <End Role="Popravak" EntitySet="Popravak" />
+            <End Role="ObavljanjeUsluge" EntitySet="ObavljanjeUsluge" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ObavljanjeUsluge_VrstaUsluge1" Association="Self.fk_ObavljanjeUsluge_VrstaUsluge1">
+            <End Role="VrstaUsluge" EntitySet="VrstaUsluge" />
+            <End Role="ObavljanjeUsluge" EntitySet="ObavljanjeUsluge" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Popravak_RezervniDio1" Association="Self.fk_Popravak_RezervniDio1">
+            <End Role="RezervniDio" EntitySet="RezervniDio" />
+            <End Role="Popravak" EntitySet="Popravak" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Popravak_Vozilo1" Association="Self.fk_Popravak_Vozilo1">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Popravak" EntitySet="Popravak" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Popravak_Zaposlenik1" Association="Self.fk_Popravak_Zaposlenik1">
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+            <End Role="Popravak" EntitySet="Popravak" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Racun_Autoservis1" Association="Self.fk_Racun_Autoservis1">
+            <End Role="Autoservis" EntitySet="Autoservis" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Racun_Popravak1" Association="Self.fk_Racun_Popravak1">
+            <End Role="Popravak" EntitySet="Popravak" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Racun_Zaposlenik1" Association="Self.fk_Racun_Zaposlenik1">
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ServisnaKnjizica_KatalogServisneKnjizice1" Association="Self.fk_ServisnaKnjizica_KatalogServisneKnjizice1">
+            <End Role="KatalogServisneKnjizice" EntitySet="KatalogServisneKnjizice" />
+            <End Role="ServisnaKnjizica" EntitySet="ServisnaKnjizica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ServisnaKnjizica_Popravak1" Association="Self.fk_ServisnaKnjizica_Popravak1">
+            <End Role="Popravak" EntitySet="Popravak" />
+            <End Role="ServisnaKnjizica" EntitySet="ServisnaKnjizica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VlasnikVozila_Mjesto" Association="Self.fk_VlasnikVozila_Mjesto">
+            <End Role="Mjesto" EntitySet="Mjesto" />
+            <End Role="VlasnikVozila" EntitySet="VlasnikVozila" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Vozilo_VlasnikVozila1" Association="Self.fk_Vozilo_VlasnikVozila1">
+            <End Role="VlasnikVozila" EntitySet="VlasnikVozila" />
+            <End Role="Vozilo" EntitySet="Vozilo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Zaposlenik_Autoservis1" Association="Self.fk_Zaposlenik_Autoservis1">
+            <End Role="Autoservis" EntitySet="Autoservis" />
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Zaposlenik_Mjesto1" Association="Self.fk_Zaposlenik_Mjesto1">
+            <End Role="Mjesto" EntitySet="Mjesto" />
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RadionicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autoservis">
+          <Key>
+            <PropertyRef Name="OIB" />
+          </Key>
+          <Property Name="OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonskiBroj" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ulica" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postanskiBrojMjesta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mjesto" Relationship="Self.fk_Autoservis_Mjesto1" FromRole="Autoservis" ToRole="Mjesto" />
+          <NavigationProperty Name="Racun" Relationship="Self.fk_Racun_Autoservis1" FromRole="Autoservis" ToRole="Racun" />
+          <NavigationProperty Name="Zaposlenik" Relationship="Self.fk_Zaposlenik_Autoservis1" FromRole="Autoservis" ToRole="Zaposlenik" />
+        </EntityType>
+        <EntityType Name="KatalogServisneKnjizice">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ServisnaKnjizica" Relationship="Self.fk_ServisnaKnjizica_KatalogServisneKnjizice1" FromRole="KatalogServisneKnjizice" ToRole="ServisnaKnjizica" />
+        </EntityType>
+        <EntityType Name="Mjesto">
+          <Key>
+            <PropertyRef Name="postanskiBroj" />
+          </Key>
+          <Property Name="postanskiBroj" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Autoservis" Relationship="Self.fk_Autoservis_Mjesto1" FromRole="Mjesto" ToRole="Autoservis" />
+          <NavigationProperty Name="VlasnikVozila" Relationship="Self.fk_VlasnikVozila_Mjesto" FromRole="Mjesto" ToRole="VlasnikVozila" />
+          <NavigationProperty Name="Zaposlenik" Relationship="Self.fk_Zaposlenik_Mjesto1" FromRole="Mjesto" ToRole="Zaposlenik" />
+        </EntityType>
+        <EntityType Name="Popravak">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="Int32" Nullable="false" />
+          <Property Name="sifraRezervnogDijela" Type="Int32" Nullable="false" />
+          <Property Name="sifraVozila" Type="Int32" Nullable="false" />
+          <Property Name="Zaposlenik_OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datumPopravka" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="RezervniDio" Relationship="Self.fk_Popravak_RezervniDio1" FromRole="Popravak" ToRole="RezervniDio" />
+          <NavigationProperty Name="Vozilo" Relationship="Self.fk_Popravak_Vozilo1" FromRole="Popravak" ToRole="Vozilo" />
+          <NavigationProperty Name="Zaposlenik" Relationship="Self.fk_Popravak_Zaposlenik1" FromRole="Popravak" ToRole="Zaposlenik" />
+          <NavigationProperty Name="Racun" Relationship="Self.fk_Racun_Popravak1" FromRole="Popravak" ToRole="Racun" />
+          <NavigationProperty Name="ServisnaKnjizica" Relationship="Self.fk_ServisnaKnjizica_Popravak1" FromRole="Popravak" ToRole="ServisnaKnjizica" />
+          <NavigationProperty Name="VrstaUsluge" Relationship="Self.ObavljanjeUsluge" FromRole="Popravak" ToRole="VrstaUsluge" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sifraPopravka" Type="Int32" Nullable="false" />
+          <Property Name="Autoservis_OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zaposlenik_OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Autoservis" Relationship="Self.fk_Racun_Autoservis1" FromRole="Racun" ToRole="Autoservis" />
+          <NavigationProperty Name="Popravak" Relationship="Self.fk_Racun_Popravak1" FromRole="Racun" ToRole="Popravak" />
+          <NavigationProperty Name="Zaposlenik" Relationship="Self.fk_Racun_Zaposlenik1" FromRole="Racun" ToRole="Zaposlenik" />
+        </EntityType>
+        <EntityType Name="RezervniDio">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cijena" Type="Single" Nullable="false" />
+          <NavigationProperty Name="Popravak" Relationship="Self.fk_Popravak_RezervniDio1" FromRole="RezervniDio" ToRole="Popravak" />
+        </EntityType>
+        <EntityType Name="ServisnaKnjizica">
+          <Key>
+            <PropertyRef Name="KatalogServisneKnjizice_sifra" />
+            <PropertyRef Name="Popravak_sifra" />
+          </Key>
+          <Property Name="KatalogServisneKnjizice_sifra" Type="Int32" Nullable="false" />
+          <Property Name="Popravak_sifra" Type="Int32" Nullable="false" />
+          <Property Name="vrijednost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KatalogServisneKnjizice" Relationship="Self.fk_ServisnaKnjizica_KatalogServisneKnjizice1" FromRole="ServisnaKnjizica" ToRole="KatalogServisneKnjizice" />
+          <NavigationProperty Name="Popravak" Relationship="Self.fk_ServisnaKnjizica_Popravak1" FromRole="ServisnaKnjizica" ToRole="Popravak" />
+        </EntityType>
+        <EntityType Name="VlasnikVozila">
+          <Key>
+            <PropertyRef Name="OIB" />
+          </Key>
+          <Property Name="OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datumRodenja" Type="DateTime" Nullable="false" />
+          <Property Name="spol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postanskiBrojMjesta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mjesto" Relationship="Self.fk_VlasnikVozila_Mjesto" FromRole="VlasnikVozila" ToRole="Mjesto" />
+          <NavigationProperty Name="Vozilo" Relationship="Self.fk_Vozilo_VlasnikVozila1" FromRole="VlasnikVozila" ToRole="Vozilo" />
+        </EntityType>
+        <EntityType Name="Vozilo">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="godinaProizvodnje" Type="Int32" Nullable="false" />
+          <Property Name="registracijskaOznaka" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VlasnikVozila_OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Popravak" Relationship="Self.fk_Popravak_Vozilo1" FromRole="Vozilo" ToRole="Popravak" />
+          <NavigationProperty Name="VlasnikVozila" Relationship="Self.fk_Vozilo_VlasnikVozila1" FromRole="Vozilo" ToRole="VlasnikVozila" />
+        </EntityType>
+        <EntityType Name="VrstaUsluge">
+          <Key>
+            <PropertyRef Name="sifra" />
+          </Key>
+          <Property Name="sifra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cijena" Type="Single" Nullable="false" />
+          <NavigationProperty Name="Popravak" Relationship="Self.ObavljanjeUsluge" FromRole="VrstaUsluge" ToRole="Popravak" />
+        </EntityType>
+        <EntityType Name="Zaposlenik">
+          <Key>
+            <PropertyRef Name="OIB" />
+          </Key>
+          <Property Name="OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datumZaposlenja" Type="DateTime" Nullable="false" />
+          <Property Name="korisnickoIme" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mjesto_sifra" Type="Int32" Nullable="false" />
+          <Property Name="Autoservis_OIB" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Autoservis" Relationship="Self.fk_Zaposlenik_Autoservis1" FromRole="Zaposlenik" ToRole="Autoservis" />
+          <NavigationProperty Name="Mjesto" Relationship="Self.fk_Zaposlenik_Mjesto1" FromRole="Zaposlenik" ToRole="Mjesto" />
+          <NavigationProperty Name="Popravak" Relationship="Self.fk_Popravak_Zaposlenik1" FromRole="Zaposlenik" ToRole="Popravak" />
+          <NavigationProperty Name="Racun" Relationship="Self.fk_Racun_Zaposlenik1" FromRole="Zaposlenik" ToRole="Racun" />
+        </EntityType>
+        <Association Name="fk_Autoservis_Mjesto1">
+          <End Role="Mjesto" Type="Self.Mjesto" Multiplicity="1" />
+          <End Role="Autoservis" Type="Self.Autoservis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjesto">
+              <PropertyRef Name="postanskiBroj" />
+            </Principal>
+            <Dependent Role="Autoservis">
+              <PropertyRef Name="postanskiBrojMjesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Racun_Autoservis1">
+          <End Role="Autoservis" Type="Self.Autoservis" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autoservis">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Autoservis_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Zaposlenik_Autoservis1">
+          <End Role="Autoservis" Type="Self.Autoservis" Multiplicity="1" />
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autoservis">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Zaposlenik">
+              <PropertyRef Name="Autoservis_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ServisnaKnjizica_KatalogServisneKnjizice1">
+          <End Role="KatalogServisneKnjizice" Type="Self.KatalogServisneKnjizice" Multiplicity="1" />
+          <End Role="ServisnaKnjizica" Type="Self.ServisnaKnjizica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KatalogServisneKnjizice">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="ServisnaKnjizica">
+              <PropertyRef Name="KatalogServisneKnjizice_sifra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VlasnikVozila_Mjesto">
+          <End Role="Mjesto" Type="Self.Mjesto" Multiplicity="1" />
+          <End Role="VlasnikVozila" Type="Self.VlasnikVozila" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjesto">
+              <PropertyRef Name="postanskiBroj" />
+            </Principal>
+            <Dependent Role="VlasnikVozila">
+              <PropertyRef Name="postanskiBrojMjesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Zaposlenik_Mjesto1">
+          <End Role="Mjesto" Type="Self.Mjesto" Multiplicity="1" />
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mjesto">
+              <PropertyRef Name="postanskiBroj" />
+            </Principal>
+            <Dependent Role="Zaposlenik">
+              <PropertyRef Name="Mjesto_sifra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Popravak_RezervniDio1">
+          <End Role="RezervniDio" Type="Self.RezervniDio" Multiplicity="1" />
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RezervniDio">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="Popravak">
+              <PropertyRef Name="sifraRezervnogDijela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Popravak_Vozilo1">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="Popravak">
+              <PropertyRef Name="sifraVozila" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Popravak_Zaposlenik1">
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="1" />
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposlenik">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Popravak">
+              <PropertyRef Name="Zaposlenik_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Racun_Popravak1">
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravak">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="sifraPopravka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ServisnaKnjizica_Popravak1">
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="1" />
+          <End Role="ServisnaKnjizica" Type="Self.ServisnaKnjizica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Popravak">
+              <PropertyRef Name="sifra" />
+            </Principal>
+            <Dependent Role="ServisnaKnjizica">
+              <PropertyRef Name="Popravak_sifra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Racun_Zaposlenik1">
+          <End Role="Zaposlenik" Type="Self.Zaposlenik" Multiplicity="1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaposlenik">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Zaposlenik_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Vozilo_VlasnikVozila1">
+          <End Role="VlasnikVozila" Type="Self.VlasnikVozila" Multiplicity="1" />
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VlasnikVozila">
+              <PropertyRef Name="OIB" />
+            </Principal>
+            <Dependent Role="Vozilo">
+              <PropertyRef Name="VlasnikVozila_OIB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ObavljanjeUsluge">
+          <End Role="Popravak" Type="Self.Popravak" Multiplicity="*" />
+          <End Role="VrstaUsluge" Type="Self.VrstaUsluge" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProjektEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autoservis" EntityType="Self.Autoservis" />
+          <EntitySet Name="KatalogServisneKnjizice" EntityType="Self.KatalogServisneKnjizice" />
+          <EntitySet Name="Mjesto" EntityType="Self.Mjesto" />
+          <EntitySet Name="Popravak" EntityType="Self.Popravak" />
+          <EntitySet Name="Racun" EntityType="Self.Racun" />
+          <EntitySet Name="RezervniDio" EntityType="Self.RezervniDio" />
+          <EntitySet Name="ServisnaKnjizica" EntityType="Self.ServisnaKnjizica" />
+          <EntitySet Name="VlasnikVozila" EntityType="Self.VlasnikVozila" />
+          <EntitySet Name="Vozilo" EntityType="Self.Vozilo" />
+          <EntitySet Name="VrstaUsluge" EntityType="Self.VrstaUsluge" />
+          <EntitySet Name="Zaposlenik" EntityType="Self.Zaposlenik" />
+          <AssociationSet Name="fk_Autoservis_Mjesto1" Association="Self.fk_Autoservis_Mjesto1">
+            <End Role="Mjesto" EntitySet="Mjesto" />
+            <End Role="Autoservis" EntitySet="Autoservis" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Racun_Autoservis1" Association="Self.fk_Racun_Autoservis1">
+            <End Role="Autoservis" EntitySet="Autoservis" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Zaposlenik_Autoservis1" Association="Self.fk_Zaposlenik_Autoservis1">
+            <End Role="Autoservis" EntitySet="Autoservis" />
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ServisnaKnjizica_KatalogServisneKnjizice1" Association="Self.fk_ServisnaKnjizica_KatalogServisneKnjizice1">
+            <End Role="KatalogServisneKnjizice" EntitySet="KatalogServisneKnjizice" />
+            <End Role="ServisnaKnjizica" EntitySet="ServisnaKnjizica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VlasnikVozila_Mjesto" Association="Self.fk_VlasnikVozila_Mjesto">
+            <End Role="Mjesto" EntitySet="Mjesto" />
+            <End Role="VlasnikVozila" EntitySet="VlasnikVozila" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Zaposlenik_Mjesto1" Association="Self.fk_Zaposlenik_Mjesto1">
+            <End Role="Mjesto" EntitySet="Mjesto" />
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Popravak_RezervniDio1" Association="Self.fk_Popravak_RezervniDio1">
+            <End Role="RezervniDio" EntitySet="RezervniDio" />
+            <End Role="Popravak" EntitySet="Popravak" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Popravak_Vozilo1" Association="Self.fk_Popravak_Vozilo1">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Popravak" EntitySet="Popravak" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Popravak_Zaposlenik1" Association="Self.fk_Popravak_Zaposlenik1">
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+            <End Role="Popravak" EntitySet="Popravak" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Racun_Popravak1" Association="Self.fk_Racun_Popravak1">
+            <End Role="Popravak" EntitySet="Popravak" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ServisnaKnjizica_Popravak1" Association="Self.fk_ServisnaKnjizica_Popravak1">
+            <End Role="Popravak" EntitySet="Popravak" />
+            <End Role="ServisnaKnjizica" EntitySet="ServisnaKnjizica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Racun_Zaposlenik1" Association="Self.fk_Racun_Zaposlenik1">
+            <End Role="Zaposlenik" EntitySet="Zaposlenik" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Vozilo_VlasnikVozila1" Association="Self.fk_Vozilo_VlasnikVozila1">
+            <End Role="VlasnikVozila" EntitySet="VlasnikVozila" />
+            <End Role="Vozilo" EntitySet="Vozilo" />
+          </AssociationSet>
+          <AssociationSet Name="ObavljanjeUsluge" Association="Self.ObavljanjeUsluge">
+            <End Role="Popravak" EntitySet="Popravak" />
+            <End Role="VrstaUsluge" EntitySet="VrstaUsluge" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RadionicaModelStoreContainer" CdmEntityContainer="ProjektEntities">
+          <EntitySetMapping Name="Autoservis">
+            <EntityTypeMapping TypeName="RadionicaModel.Autoservis">
+              <MappingFragment StoreEntitySet="Autoservis">
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="telefonskiBroj" ColumnName="telefonskiBroj" />
+                <ScalarProperty Name="ulica" ColumnName="ulica" />
+                <ScalarProperty Name="postanskiBrojMjesta" ColumnName="postanskiBrojMjesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KatalogServisneKnjizice">
+            <EntityTypeMapping TypeName="RadionicaModel.KatalogServisneKnjizice">
+              <MappingFragment StoreEntitySet="KatalogServisneKnjizice">
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mjesto">
+            <EntityTypeMapping TypeName="RadionicaModel.Mjesto">
+              <MappingFragment StoreEntitySet="Mjesto">
+                <ScalarProperty Name="postanskiBroj" ColumnName="postanskiBroj" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Popravak">
+            <EntityTypeMapping TypeName="RadionicaModel.Popravak">
+              <MappingFragment StoreEntitySet="Popravak">
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="sifraRezervnogDijela" ColumnName="sifraRezervnogDijela" />
+                <ScalarProperty Name="sifraVozila" ColumnName="sifraVozila" />
+                <ScalarProperty Name="Zaposlenik_OIB" ColumnName="Zaposlenik_OIB" />
+                <ScalarProperty Name="datumPopravka" ColumnName="datumPopravka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Racun">
+            <EntityTypeMapping TypeName="RadionicaModel.Racun">
+              <MappingFragment StoreEntitySet="Racun">
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="sifraPopravka" ColumnName="sifraPopravka" />
+                <ScalarProperty Name="Autoservis_OIB" ColumnName="Autoservis_OIB" />
+                <ScalarProperty Name="Zaposlenik_OIB" ColumnName="Zaposlenik_OIB" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RezervniDio">
+            <EntityTypeMapping TypeName="RadionicaModel.RezervniDio">
+              <MappingFragment StoreEntitySet="RezervniDio">
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServisnaKnjizica">
+            <EntityTypeMapping TypeName="RadionicaModel.ServisnaKnjizica">
+              <MappingFragment StoreEntitySet="ServisnaKnjizica">
+                <ScalarProperty Name="KatalogServisneKnjizice_sifra" ColumnName="KatalogServisneKnjizice_sifra" />
+                <ScalarProperty Name="Popravak_sifra" ColumnName="Popravak_sifra" />
+                <ScalarProperty Name="vrijednost" ColumnName="vrijednost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VlasnikVozila">
+            <EntityTypeMapping TypeName="RadionicaModel.VlasnikVozila">
+              <MappingFragment StoreEntitySet="VlasnikVozila">
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="datumRodenja" ColumnName="datumRodenja" />
+                <ScalarProperty Name="spol" ColumnName="spol" />
+                <ScalarProperty Name="postanskiBrojMjesta" ColumnName="postanskiBrojMjesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vozilo">
+            <EntityTypeMapping TypeName="RadionicaModel.Vozilo">
+              <MappingFragment StoreEntitySet="Vozilo">
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="godinaProizvodnje" ColumnName="godinaProizvodnje" />
+                <ScalarProperty Name="registracijskaOznaka" ColumnName="registracijskaOznaka" />
+                <ScalarProperty Name="VlasnikVozila_OIB" ColumnName="VlasnikVozila_OIB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VrstaUsluge">
+            <EntityTypeMapping TypeName="RadionicaModel.VrstaUsluge">
+              <MappingFragment StoreEntitySet="VrstaUsluge">
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zaposlenik">
+            <EntityTypeMapping TypeName="RadionicaModel.Zaposlenik">
+              <MappingFragment StoreEntitySet="Zaposlenik">
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="datumZaposlenja" ColumnName="datumZaposlenja" />
+                <ScalarProperty Name="korisnickoIme" ColumnName="korisnickoIme" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="Mjesto_sifra" ColumnName="Mjesto_sifra" />
+                <ScalarProperty Name="Autoservis_OIB" ColumnName="Autoservis_OIB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ObavljanjeUsluge" TypeName="RadionicaModel.ObavljanjeUsluge" StoreEntitySet="ObavljanjeUsluge">
+            <EndProperty Name="Popravak">
+              <ScalarProperty Name="sifra" ColumnName="sifraPopravka" />
+            </EndProperty>
+            <EndProperty Name="VrstaUsluge">
+              <ScalarProperty Name="sifra" ColumnName="sifraVrsteUsluge" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

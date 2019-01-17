@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B35BF3C-D77C-4CB1-A894-611BC53A89B0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RadionicaZaVozila</RootNamespace>
+    <AssemblyName>RadionicaZaVozila</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.Design.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WebDesign.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.11.0.3366.16\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.13\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Pomoc aplikacije">
+      <HintPath>..\..\Pomoc aplikacije\bin\Debug\Pomoc aplikacije.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Autoservis.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dsInformacijeZaposlenika.cs">
+      <DependentUpon>dsInformacijeZaposlenika.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsInformacijeZaposlenika.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsInformacijeZaposlenika.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="dsRadionicaVozila.cs">
+      <DependentUpon>dsRadionicaVozila.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="dsRadionicaVozila.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRadionicaVozila.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="FrmGlavna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGlavna.Designer.cs">
+      <DependentUpon>FrmGlavna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNoviPopravak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNoviPopravak.Designer.cs">
+      <DependentUpon>FrmNoviPopravak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNoviRacun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNoviRacun.Designer.cs">
+      <DependentUpon>FrmNoviRacun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNoviRezervniDio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNoviRezervniDio.Designer.cs">
+      <DependentUpon>FrmNoviRezervniDio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNoviVlasnikVozila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNoviVlasnikVozila.Designer.cs">
+      <DependentUpon>FrmNoviVlasnikVozila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNoviZaposlenik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNoviZaposlenik.Designer.cs">
+      <DependentUpon>FrmNoviZaposlenik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNovoMjesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNovoMjesto.Designer.cs">
+      <DependentUpon>FrmNovoMjesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNovoVozilo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNovoVozilo.Designer.cs">
+      <DependentUpon>FrmNovoVozilo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazIzvjestajaRacun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazIzvjestajaRacun.Designer.cs">
+      <DependentUpon>FrmPrikazIzvjestajaRacun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazPopravaka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazPopravaka.Designer.cs">
+      <DependentUpon>FrmPrikazPopravaka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazRacuna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazRacuna.Designer.cs">
+      <DependentUpon>FrmPrikazRacuna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazRezervnihDijelova.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazRezervnihDijelova.Designer.cs">
+      <DependentUpon>FrmPrikazRezervnihDijelova.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazStatistikePopravaka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazStatistikePopravaka.Designer.cs">
+      <DependentUpon>FrmPrikazStatistikePopravaka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazVlasnikaVozila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazVlasnikaVozila.Designer.cs">
+      <DependentUpon>FrmPrikazVlasnikaVozila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrijava.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrijava.Designer.cs">
+      <DependentUpon>FrmPrijava.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazVozila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazVozila.Designer.cs">
+      <DependentUpon>FrmPrikazVozila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrikazZaposlenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrikazZaposlenika.Designer.cs">
+      <DependentUpon>FrmPrikazZaposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KatalogServisneKnjizice.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mjesto.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NovaServisnaKnjizica.cs" />
+    <Compile Include="NoviPopravak.cs" />
+    <Compile Include="NoviRacun.cs" />
+    <Compile Include="NoviRezervniDio.cs" />
+    <Compile Include="NoviVlasnikVozila.cs" />
+    <Compile Include="NoviZaposlenik.cs" />
+    <Compile Include="NovoMjesto.cs" />
+    <Compile Include="NovoVozilo.cs" />
+    <Compile Include="Popravak.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prijava.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Racun.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RadionicaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadionicaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RadionicaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RadionicaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadionicaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="RadionicaUtils.cs" />
+    <Compile Include="RezervniDio.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServisnaKnjizica.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="VlasnikVozila.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vozilo.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VrstaUsluge.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zaposlenik.cs">
+      <DependentUpon>RadionicaModel.tt</DependentUpon>
+    </Compile>
+    <Content Include="RadionicaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RadionicaModel.edmx</DependentUpon>
+      <LastGenOutput>RadionicaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="RadionicaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RadionicaModel.edmx</DependentUpon>
+      <LastGenOutput>RadionicaModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="FrmGlavna.resx">
+      <DependentUpon>FrmGlavna.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNoviPopravak.resx">
+      <DependentUpon>FrmNoviPopravak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNoviRacun.resx">
+      <DependentUpon>FrmNoviRacun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNoviRezervniDio.resx">
+      <DependentUpon>FrmNoviRezervniDio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNoviVlasnikVozila.resx">
+      <DependentUpon>FrmNoviVlasnikVozila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNoviZaposlenik.resx">
+      <DependentUpon>FrmNoviZaposlenik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNovoMjesto.resx">
+      <DependentUpon>FrmNovoMjesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNovoVozilo.resx">
+      <DependentUpon>FrmNovoVozilo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazIzvjestajaRacun.resx">
+      <DependentUpon>FrmPrikazIzvjestajaRacun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazPopravaka.resx">
+      <DependentUpon>FrmPrikazPopravaka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazRacuna.resx">
+      <DependentUpon>FrmPrikazRacuna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazRezervnihDijelova.resx">
+      <DependentUpon>FrmPrikazRezervnihDijelova.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazStatistikePopravaka.resx">
+      <DependentUpon>FrmPrikazStatistikePopravaka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazVlasnikaVozila.resx">
+      <DependentUpon>FrmPrikazVlasnikaVozila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrijava.resx">
+      <DependentUpon>FrmPrijava.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazVozila.resx">
+      <DependentUpon>FrmPrikazVozila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrikazZaposlenika.resx">
+      <DependentUpon>FrmPrikazZaposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="izvjRacun.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="dsInformacijeZaposlenika.xsc">
+      <DependentUpon>dsInformacijeZaposlenika.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dsInformacijeZaposlenika.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsInformacijeZaposlenika.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dsInformacijeZaposlenika.xss">
+      <DependentUpon>dsInformacijeZaposlenika.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dsRadionicaVozila.xsc">
+      <DependentUpon>dsRadionicaVozila.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dsRadionicaVozila.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRadionicaVozila.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dsRadionicaVozila.xss">
+      <DependentUpon>dsRadionicaVozila.xsd</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Pomoc.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Autoservis.datasource" />
+    <None Include="Properties\DataSources\KatalogServisneKnjizice.datasource" />
+    <None Include="Properties\DataSources\Mjesto.datasource" />
+    <None Include="Properties\DataSources\Popravak.datasource" />
+    <None Include="Properties\DataSources\RadionicaZaVozila.dsInformacijeZaposlenikaTableAdapters.dtInformacijeZaposlenikaTableAdapter.datasource" />
+    <None Include="Properties\DataSources\RadionicaZaVozila.dsInformacijeZaposlenikaTableAdapters.TableAdapterManager+UpdateOrderOption.datasource" />
+    <None Include="Properties\DataSources\RadionicaZaVozila.dsInformacijeZaposlenikaTableAdapters.TableAdapterManager.datasource" />
+    <None Include="Properties\DataSources\RezervniDio.datasource" />
+    <None Include="Properties\DataSources\ServisnaKnjizica.datasource" />
+    <None Include="Properties\DataSources\VlasnikVozila.datasource" />
+    <None Include="Properties\DataSources\Vozilo.datasource" />
+    <None Include="Properties\DataSources\VrstaUsluge.datasource" />
+    <None Include="Properties\DataSources\Zaposlenik.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="RadionicaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RadionicaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="RadionicaModel.edmx.diagram">
+      <DependentUpon>RadionicaModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
